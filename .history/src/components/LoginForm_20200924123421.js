@@ -1,36 +1,25 @@
 import React from "react";
 
 class LoginForm extends React.Component {
-  constructor(props) {
+  constructor() {
     super();
 
     this.state = {
       username: "",
-      password: "",
-      handleLogin: props.handleLogin
+      password: ""
     };
   }
-  handleSubmit = event => {
+  handleLogin = event => {
     event.preventDefault()
-    if (this.state.username !== "" && this.state.password !== "") {
-      let formData = {
-        username: this.state.username,
-        password: this.state.password
-      }
-      this.state.handleLogin({formData})
+    let formData = {
+      username: this.state.username,
+      password: this.state.password
     }
-    
-    // this.setState({formData})
-  }
-  handleInputChange = event => {
-    this.setState({
-      ...this.state,
-      [event.target.name]: event.target.value
-    })
+    this.setState({formData})
   }
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form>
         <div>
           <label>
             Username
@@ -39,7 +28,7 @@ class LoginForm extends React.Component {
               name="username" 
               type="text"
               value={this.state.username}
-              onChange={this.handleInputChange} />
+              onchange={this.hadleInputChange} />
           </label>
         </div>
         <div>
@@ -49,13 +38,11 @@ class LoginForm extends React.Component {
               id="password" 
               name="password" 
               type="password" 
-              value={this.state.username}
-              onChange={this.handleInputChange} 
               />
           </label>
         </div>
         <div>
-          <button type="submit" >Log in</button>
+          <button type="submit" onSubmit={handleLogin}>Log in</button>
         </div>
       </form>
     );

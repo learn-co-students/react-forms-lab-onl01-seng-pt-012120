@@ -1,7 +1,7 @@
 import React from "react";
 
 class LoginForm extends React.Component {
-  constructor(props) {
+  constructor() {
     super();
 
     this.state = {
@@ -12,15 +12,11 @@ class LoginForm extends React.Component {
   }
   handleSubmit = event => {
     event.preventDefault()
-    if (this.state.username !== "" && this.state.password !== "") {
-      let formData = {
-        username: this.state.username,
-        password: this.state.password
-      }
-      this.state.handleLogin({formData})
+    let formData = {
+      username: this.state.username,
+      password: this.state.password
     }
-    
-    // this.setState({formData})
+    this.setState({formData})
   }
   handleInputChange = event => {
     this.setState({
